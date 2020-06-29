@@ -1,0 +1,14 @@
+e85e0a3b676bceee20b6d051f92b007a *DESCRIPTION
+942825bbc053344c24309779b1cc15b9 *NAMESPACE
+07aaed5edadbd6507189d8c3befba3ea *R/filter_date.R
+8619f695229e1296f9872abf99f7e44c *R/get_irreversible_municipality_mutations.R
+6fbe36bcd71c0a7fb394ab39e3968f6a *R/import_CH_municipality_inventory.R
+d5750fa093ecb459e2e687ceb49fe4ef *R/map_old_to_new_state.R
+0697af1985d0947bec9550b3a6d4d84b *R/smmt-package.R
+e330c8fd1b929e15d99d9b86175cc5f5 *man/filter_date.Rd
+cae2b2378940fce29ddab9b186a8e8ff *man/get_irreversible_municipality_mutations.Rd
+6798f46040554800fb3373eb63341952 *man/import_CH_municipality_inventory.Rd
+be2cf001b4b93e334401703a0186ee5d *man/map_old_to_new_state.Rd
+a57a19b949d8f80e8d87a41bc8a21192 *man/smmt.Rd
+bfea3898183c5677612bd603e505bf95 *tests/testthat.R
+467f570ed07283546d6c42ff4f73df65 *tests/testthat/test-get_irreversible_municipality_mutations.R
