@@ -3,10 +3,10 @@
 \docType{package}
 \name{smmt}
 \alias{smmt}
-\title{SMMT - The Swiss Municipality Merger Tool Maps Municipalities Over Time}
+\title{SMMT - The Swiss Municipal Data Merger Tool Maps Municipalities Over Time}
 \description{
 In Switzerland, the landscape of municipalities is changing rapidly mainly
-due to mergers. The Swiss Municipality Merger Tool  automatically detects
+due to mergers. The Swiss Municipal Data Merger Tool automatically detects
 these mutations and maps municipalities of an old state to municipalities of
 a new state. This functionality is helpful when working with datasets that
 are based on different spatial references. The spatial reference in this

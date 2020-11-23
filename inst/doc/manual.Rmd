@@ -1,10 +1,10 @@
 ---
-title: "Swiss Municipality Merger Tool"
+title: "Swiss Municipal Data Merger Tool: Manual"
 author: "Valentin Knechtl"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Swiss Municipality Merger Tool}
+  %\VignetteIndexEntry{Swiss Municipal Data Merger Tool: Manual}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -29,14 +29,22 @@ In Switzerland, the landscape of municipalities is changing rapidly mainly due t
 
 ### Setup
 
-1) Download & unpack the Swiss municipality inventory from the Federal Statistical Office website (https://www.bfs.admin.ch/bfsstatic/dam/assets/11467405/master).  
+1) Download & unpack the Swiss municipality inventory from the Federal Statistical Office website (https://www.bfs.admin.ch/bfsstatic/dam/assets/11467405/master).
+
+```{r, eval=FALSE}
+path_inventory_xml <- download_municipality_inventory(path = getwd())
+```
+
 2) Import the inventory into the workspace
 
 ```{r, eval=FALSE}
-# File name depends on inventory version.
-file_path_inventory_xml <- "path/to/eCH0071_XXXXXX.xml"
+mutations_object <- import_CH_municipality_inventory(file_path = path_inventory_xml)
+mutations        <- mutations_object$mutations
 
-mutations <- import_CH_municipality_inventory(file_path = file_path_inventory_xml)
+# Alternative: Use a local available version (e.g. Version from January 1st, 2018):
+file_path_inventory_xml <- "path/to/eCH0071_180101.xml"
+mutations_object <- import_CH_municipality_inventory(file_path = file_path_inventory_xml)
+mutations        <- mutations_object$mutations
 ```
 
 ### Get Mapping Table
@@ -71,6 +79,7 @@ row.names = c(NA, -3L), class = c("tbl_df", "tbl", "data.frame"))
 
 ```{r}
 mapping_object <- map_old_to_new_state(mutations, old_state, new_state)
+mapping_table  <- mapping_object$mapped
 ```
 Excerpt of mapping table: 
 
@@ -79,6 +88,8 @@ Excerpt of mapping table:
 |4021 | Baden | 4021 | Baden |
 |4021 | Baden | 4025 | Daettwil|
 
+
+If of relevance, use the information about municipalities which could not be mapped (e.g. due to secessions). For example, if you need to exclude these elements from a dataset.
 
 ## Definitions
 

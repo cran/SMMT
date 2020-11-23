@@ -8,10 +8,16 @@ library(SMMT)
 
 
 ## ---- eval=FALSE--------------------------------------------------------------
-#  # File name depends on inventory version.
-#  file_path_inventory_xml <- "path/to/eCH0071_XXXXXX.xml"
+#  path_inventory_xml <- download_municipality_inventory(path = getwd())
+
+## ---- eval=FALSE--------------------------------------------------------------
+#  mutations_object <- import_CH_municipality_inventory(file_path = path_inventory_xml)
+#  mutations        <- mutations_object$mutations
 #  
-#  mutations <- import_CH_municipality_inventory(file_path = file_path_inventory_xml)
+#  # Alternative: Use a local available version (e.g. Version from January 1st, 2018):
+#  file_path_inventory_xml <- "path/to/eCH0071_180101.xml"
+#  mutations_object <- import_CH_municipality_inventory(file_path = file_path_inventory_xml)
+#  mutations        <- mutations_object$mutations
 
 ## -----------------------------------------------------------------------------
 old_state <- as.POSIXct("1961-01-01")
@@ -37,4 +43,5 @@ row.names = c(NA, -3L), class = c("tbl_df", "tbl", "data.frame"))
 
 ## -----------------------------------------------------------------------------
 mapping_object <- map_old_to_new_state(mutations, old_state, new_state)
+mapping_table  <- mapping_object$mapped
 

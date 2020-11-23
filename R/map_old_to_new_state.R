@@ -165,8 +165,13 @@ map_old_to_new_state <- function(mutations, state_old, state_new) {
   mapped <- do.call(rbind, mapped_list)
   mapped <- mapped %>% arrange(bfs_nr_new)
   
-  unmapped <- do.call(rbind, non_mapped_list)
-  unmapped <- unmapped %>% arrange(bfs_nr_new)
+  unmapped_full <- do.call(rbind, non_mapped_list)
+  unmapped_full <- unmapped_full %>% arrange(bfs_nr_new)
+  
+  unmapped_state_new <- select(unmapped_full, bfs_nr_new, name_new) %>% unique()
+  unmapped_state_old <- select(unmapped_full, bfs_nr_old, name_old) %>% unique()
+  
+  unmapped <- list(state_old = unmapped_state_old, state_new = unmapped_state_new)
   
   return(list(mapped = mapped, unmapped = unmapped, 
               state_old = state_old, state_new = state_new))
