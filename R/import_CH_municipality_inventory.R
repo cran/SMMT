@@ -16,10 +16,6 @@
 #' \href{https://www.bfs.admin.ch/bfs/de/home/grundlagen/agvch/historisiertes-gemeindeverzeichnis.assetdetail.11467405.html}{Historisiertes
 #' Gemeindeverzeichnis}
 #'
-#' Direct download link:
-#' \href{https://www.bfs.admin.ch/bfsstatic/dam/assets/11467405/master}{Download
-#' XML}
-#'
 #' @param file_path Character vector of length one. It contains the file path to
 #'   the Swiss municipality inventory XML file.
 #'
@@ -33,42 +29,28 @@
 import_CH_municipality_inventory <- function(file_path) {
   
   # XML import --------------------------------------------------------------
-  xml_structure <- xmlToList(xmlParse(file_path))
+  xml_parsed <- xmlParse(file_path)
   
   # Process canton mutations object -----------------------------------------
   
-  mut_canton_list <- list()
-  for (ii in 1:length(xml_structure$cantons)) {
-    mut_canton_list[[ii]] <- as.data.frame(xml_structure$cantons[ii]$canton)
-  }
-  mutations_cantons <- as_tibble(do.call(rbind, mut_canton_list))
+  mutations_cantons <- xmlToDataFrame(nodes = getNodeSet(xml_parsed, "/eCH-0071:nomenclature/cantons/canton"))
+  mutations_cantons <- tibble::as_tibble(mutations_cantons)
+  
   
   mutations_cantons$cantonId            <- as.integer(as.character(mutations_cantons$cantonId))
   mutations_cantons$cantonAbbreviation  <- as.character(mutations_cantons$cantonAbbreviation)
   mutations_cantons$cantonLongName      <- as.character(mutations_cantons$cantonLongName)
-  mutations_cantons$cantonDateOfChange  <- as.POSIXct(as.character(mutations_cantons$cantonDateOfChange))
+  mutations_cantons$cantonDateOfChange  <- as.Date(as.character(mutations_cantons$cantonDateOfChange))
   
   mutations <- rename(mutations_cantons,
-                      kanton_abbr = cantonAbbreviation,
+                      canton = cantonAbbreviation,
                       change_date = cantonDateOfChange)
   
   
   # Process municipality mutations object -----------------------------------
-
-  mut_munici_list <- list()
-  for (ii in 1:length(xml_structure$municipalities)) {
-    
-    mut_munici_list[[ii]] <- as.data.frame(xml_structure$municipalities[ii]$municipality)
-    
-    # If abolition attributes are missing, add them
-    if (ncol(mut_munici_list[[ii]]) == 12) {
-      mut_munici_list[[ii]]$municipalityAbolitionNumber <- NA
-      mut_munici_list[[ii]]$municipalityAbolitionMode   <- NA
-      mut_munici_list[[ii]]$municipalityAbolitionDate   <- NA
-    }
-  }
   
-  mutations <- as_tibble(do.call(rbind, mut_munici_list))
+  mutations <- xmlToDataFrame(nodes = getNodeSet(xml_parsed, "/eCH-0071:nomenclature/municipalities/municipality"))
+  mutations <- tibble::as_tibble(mutations)
   
 
   # Define column types -----------------------------------------------------
@@ -83,11 +65,11 @@ import_CH_municipality_inventory <- function(file_path) {
   mutations$municipalityStatus          <- as.integer(as.character(mutations$municipalityStatus))
   mutations$municipalityAdmissionNumber <- as.integer(as.character(mutations$municipalityAdmissionNumber))
   mutations$municipalityAdmissionMode   <- as.integer(as.character(mutations$municipalityAdmissionMode))
-  mutations$municipalityAdmissionDate   <- as.POSIXct(as.character(mutations$municipalityAdmissionDate))
+  mutations$municipalityAdmissionDate   <- as.Date(as.character(mutations$municipalityAdmissionDate))
   mutations$municipalityAbolitionNumber <- as.integer(as.character(mutations$municipalityAbolitionNumber))
   mutations$municipalityAbolitionMode   <- as.integer(as.character(mutations$municipalityAbolitionMode))
-  mutations$municipalityAbolitionDate   <- as.POSIXct(as.character(mutations$municipalityAbolitionDate))
-  mutations$municipalityDateOfChange    <- as.POSIXct(as.character(mutations$municipalityDateOfChange))
+  mutations$municipalityAbolitionDate   <- as.Date(as.character(mutations$municipalityAbolitionDate))
+  mutations$municipalityDateOfChange    <- as.Date(as.character(mutations$municipalityDateOfChange))
   
   
   # Modify and select columns -----------------------------------------------
@@ -95,7 +77,7 @@ import_CH_municipality_inventory <- function(file_path) {
   mutations <- rename(mutations,
                       hist_id          = historyMunicipalityId,
                       district_hist_id = districtHistId,
-                      kanton_abbr      = cantonAbbreviation,
+                      canton           = cantonAbbreviation,
                       bfs_nr           = municipalityId,
                       name             = municipalityShortName,
                       entry_mode       = municipalityEntryMode,

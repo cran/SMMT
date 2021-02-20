@@ -5,14 +5,17 @@
 \title{Download municipality inventory}
 \usage{
 download_municipality_inventory(
-  url = "https://www.bfs.admin.ch/bfsstatic/dam/assets/11467405/master",
-  path = getwd()
+  url = get_current_url(),
+  path = getwd(),
+  verbose = TRUE
 )
 }
 \arguments{
 \item{url}{Character vector of length one. Link to the zip file containing the municipality inventory}
 
 \item{path}{Character vector of length one. Destination of extracted xml file.}
+
+\item{verbose}{Get a message after download about the content of the inventory.}
 }
 \value{
 Character vector of length one. File path to the extracted XML file.

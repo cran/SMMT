@@ -18,6 +18,8 @@
 #' @import tibble
 #' @importFrom curl curl_download
 #' @importFrom utils unzip
+#' @importFrom rvest html_nodes html_attr
+#' @importFrom xml2 read_html
 #'   
 utils::globalVariables(c("admission_date", "state", "status",
 "abolition_date", "abolition_mode", "abolition_nr", "add_column", "admission_mode",
@@ -28,4 +30,4 @@ utils::globalVariables(c("admission_date", "state", "status",
 "municipalityAdmissionDate", "municipalityAdmissionMode",
 "municipalityAdmissionNumber", "municipalityDateOfChange",
 "municipalityEntryMode", "municipalityId", "municipalityLongName",
-"municipalityShortName", "municipalityStatus", "name_new", "name_old", "is_xml"))
+"municipalityShortName", "municipalityStatus", "name_new", "name_old", "is_xml", "Name", "bfs_nr", "canton", "is_draft"))

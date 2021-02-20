@@ -9,7 +9,7 @@ filter_date(tbl, date)
 \arguments{
 \item{tbl}{A tibble}
 
-\item{date}{A \code{POSIXct} object}
+\item{date}{A \code{Date} object of length one.}
 }
 \value{
 A tibble which is a subset of \code{tbl}

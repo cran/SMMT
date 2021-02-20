@@ -39,14 +39,14 @@ Erläuterungen und Anwendungen - Historisierte Gemeindeverzeichnis der Schweiz
  name = c("Arni-Islisberg", "Arni (AG)", "Islisberg"), 
  admission_nr = c(1000L, 1481L, 1481L), 
  admission_mode = c(20L, 21L, 21L), 
- admission_date = structure(c(-315619200, 410227200, 410227200),
- class = c("POSIXct", "POSIXt"), tzone = ""), 
+ admission_date = structure(c(-3653, 4748,  4748),
+ class = c("Date")), 
  abolition_nr = c(1481L, NA, NA), 
  abolition_mode = c(29L, NA, NA), 
- abolition_date = structure(c(410140800, NA, NA),
- class = c("POSIXct", "POSIXt"), tzone = ""), 
- change_date = structure(c(410140800, 410227200, 410227200),
- class = c("POSIXct", "POSIXt"), tzone = "")), 
+ abolition_date = structure(c(4747, NA, NA),
+ class = c("Date")), 
+ change_date = structure(c(4747, 4748, 4748),
+ class = c("Date"))), 
  row.names = c(NA, -3L), class = c("tbl_df", "tbl", "data.frame"))
    
 irreversible_mutations <- get_irreversible_municipality_mutations(mutations)

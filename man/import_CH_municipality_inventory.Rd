@@ -31,10 +31,6 @@ keep track of new mutations.
 See BfS webpage for infos about Swiss municipality inventory:
 \href{https://www.bfs.admin.ch/bfs/de/home/grundlagen/agvch/historisiertes-gemeindeverzeichnis.assetdetail.11467405.html}{Historisiertes
 Gemeindeverzeichnis}
-
-Direct download link:
-\href{https://www.bfs.admin.ch/bfsstatic/dam/assets/11467405/master}{Download
-XML}
 }
 \seealso{
 \code{\link{map_old_to_new_state}}
