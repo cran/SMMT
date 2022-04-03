@@ -14,7 +14,19 @@
 
 <title>Swiss Municipal Data Merger Tool: Manual</title>
 
-<script src="data:application/javascript;base64,Ly8gUGFuZG9jIDIuOSBhZGRzIGF0dHJpYnV0ZXMgb24gYm90aCBoZWFkZXIgYW5kIGRpdi4gV2UgcmVtb3ZlIHRoZSBmb3JtZXIgKHRvCi8vIGJlIGNvbXBhdGlibGUgd2l0aCB0aGUgYmVoYXZpb3Igb2YgUGFuZG9jIDwgMi44KS4KZG9jdW1lbnQuYWRkRXZlbnRMaXN0ZW5lcignRE9NQ29udGVudExvYWRlZCcsIGZ1bmN0aW9uKGUpIHsKICB2YXIgaHMgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yQWxsKCJkaXYuc2VjdGlvbltjbGFzcyo9J2xldmVsJ10gPiA6Zmlyc3QtY2hpbGQiKTsKICB2YXIgaSwgaCwgYTsKICBmb3IgKGkgPSAwOyBpIDwgaHMubGVuZ3RoOyBpKyspIHsKICAgIGggPSBoc1tpXTsKICAgIGlmICghL15oWzEtNl0kL2kudGVzdChoLnRhZ05hbWUpKSBjb250aW51ZTsgIC8vIGl0IHNob3VsZCBiZSBhIGhlYWRlciBoMS1oNgogICAgYSA9IGguYXR0cmlidXRlczsKICAgIHdoaWxlIChhLmxlbmd0aCA+IDApIGgucmVtb3ZlQXR0cmlidXRlKGFbMF0ubmFtZSk7CiAgfQp9KTsK"></script>
+<script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
+// be compatible with the behavior of Pandoc < 2.8).
+document.addEventListener('DOMContentLoaded', function(e) {
+  var hs = document.querySelectorAll("div.section[class*='level'] > :first-child");
+  var i, h, a;
+  for (i = 0; i < hs.length; i++) {
+    h = hs[i];
+    if (!/^h[1-6]$/i.test(h.tagName)) continue;  // it should be a header h1-h6
+    a = h.attributes;
+    while (a.length > 0) h.removeAttribute(a[0].name);
+  }
+});
+</script>
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -23,73 +35,18 @@
   div.column{display: inline-block; vertical-align: top; width: 50%;}
   div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   ul.task-list{list-style: none;}
-      pre > code.sourceCode { white-space: pre; position: relative; }
-      pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-      pre > code.sourceCode > span:empty { height: 1.2em; }
-      .sourceCode { overflow: visible; }
-      code.sourceCode > span { color: inherit; text-decoration: inherit; }
-      div.sourceCode { margin: 1em 0; }
-      pre.sourceCode { margin: 0; }
-      @media screen {
-      div.sourceCode { overflow: auto; }
-      }
-      @media print {
-      pre > code.sourceCode { white-space: pre-wrap; }
-      pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-      }
-      pre.numberSource code
-        { counter-reset: source-line 0; }
-      pre.numberSource code > span
-        { position: relative; left: -4em; counter-increment: source-line; }
-      pre.numberSource code > span > a:first-child::before
-        { content: counter(source-line);
-          position: relative; left: -1em; text-align: right; vertical-align: baseline;
-          border: none; display: inline-block;
-          -webkit-touch-callout: none; -webkit-user-select: none;
-          -khtml-user-select: none; -moz-user-select: none;
-          -ms-user-select: none; user-select: none;
-          padding: 0 4px; width: 4em;
-          color: #aaaaaa;
-        }
-      pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-      div.sourceCode
-        {   }
-      @media screen {
-      pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-      }
-      code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-      code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-      code span.at { color: #7d9029; } /* Attribute */
-      code span.bn { color: #40a070; } /* BaseN */
-      code span.bu { } /* BuiltIn */
-      code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-      code span.ch { color: #4070a0; } /* Char */
-      code span.cn { color: #880000; } /* Constant */
-      code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-      code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-      code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-      code span.dt { color: #902000; } /* DataType */
-      code span.dv { color: #40a070; } /* DecVal */
-      code span.er { color: #ff0000; font-weight: bold; } /* Error */
-      code span.ex { } /* Extension */
-      code span.fl { color: #40a070; } /* Float */
-      code span.fu { color: #06287e; } /* Function */
-      code span.im { } /* Import */
-      code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-      code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-      code span.op { color: #666666; } /* Operator */
-      code span.ot { color: #007020; } /* Other */
-      code span.pp { color: #bc7a00; } /* Preprocessor */
-      code span.sc { color: #4070a0; } /* SpecialChar */
-      code span.ss { color: #bb6688; } /* SpecialString */
-      code span.st { color: #4070a0; } /* String */
-      code span.va { color: #19177c; } /* Variable */
-      code span.vs { color: #4070a0; } /* VerbatimString */
-      code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
     </style>
 
 
-<style type="text/css">code{white-space: pre;}</style>
+
+<style type="text/css">
+  code {
+    white-space: pre;
+  }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
 <style type="text/css" data-origin="pandoc">
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
@@ -180,7 +137,188 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
-<link rel="stylesheet" href="data:text/css,body%20%7B%0Abackground%2Dcolor%3A%20%23fff%3B%0Amargin%3A%201em%20auto%3B%0Amax%2Dwidth%3A%20700px%3B%0Aoverflow%3A%20visible%3B%0Apadding%2Dleft%3A%202em%3B%0Apadding%2Dright%3A%202em%3B%0Afont%2Dfamily%3A%20%22Open%20Sans%22%2C%20%22Helvetica%20Neue%22%2C%20Helvetica%2C%20Arial%2C%20sans%2Dserif%3B%0Afont%2Dsize%3A%2014px%3B%0Aline%2Dheight%3A%201%2E35%3B%0A%7D%0A%23TOC%20%7B%0Aclear%3A%20both%3B%0Amargin%3A%200%200%2010px%2010px%3B%0Apadding%3A%204px%3B%0Awidth%3A%20400px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Aborder%2Dradius%3A%205px%3B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Afont%2Dsize%3A%2013px%3B%0Aline%2Dheight%3A%201%2E3%3B%0A%7D%0A%23TOC%20%2Etoctitle%20%7B%0Afont%2Dweight%3A%20bold%3B%0Afont%2Dsize%3A%2015px%3B%0Amargin%2Dleft%3A%205px%3B%0A%7D%0A%23TOC%20ul%20%7B%0Apadding%2Dleft%3A%2040px%3B%0Amargin%2Dleft%3A%20%2D1%2E5em%3B%0Amargin%2Dtop%3A%205px%3B%0Amargin%2Dbottom%3A%205px%3B%0A%7D%0A%23TOC%20ul%20ul%20%7B%0Amargin%2Dleft%3A%20%2D2em%3B%0A%7D%0A%23TOC%20li%20%7B%0Aline%2Dheight%3A%2016px%3B%0A%7D%0Atable%20%7B%0Amargin%3A%201em%20auto%3B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dcolor%3A%20%23DDDDDD%3B%0Aborder%2Dstyle%3A%20outset%3B%0Aborder%2Dcollapse%3A%20collapse%3B%0A%7D%0Atable%20th%20%7B%0Aborder%2Dwidth%3A%202px%3B%0Apadding%3A%205px%3B%0Aborder%2Dstyle%3A%20inset%3B%0A%7D%0Atable%20td%20%7B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dstyle%3A%20inset%3B%0Aline%2Dheight%3A%2018px%3B%0Apadding%3A%205px%205px%3B%0A%7D%0Atable%2C%20table%20th%2C%20table%20td%20%7B%0Aborder%2Dleft%2Dstyle%3A%20none%3B%0Aborder%2Dright%2Dstyle%3A%20none%3B%0A%7D%0Atable%20thead%2C%20table%20tr%2Eeven%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Ap%20%7B%0Amargin%3A%200%2E5em%200%3B%0A%7D%0Ablockquote%20%7B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Apadding%3A%200%2E25em%200%2E75em%3B%0A%7D%0Ahr%20%7B%0Aborder%2Dstyle%3A%20solid%3B%0Aborder%3A%20none%3B%0Aborder%2Dtop%3A%201px%20solid%20%23777%3B%0Amargin%3A%2028px%200%3B%0A%7D%0Adl%20%7B%0Amargin%2Dleft%3A%200%3B%0A%7D%0Adl%20dd%20%7B%0Amargin%2Dbottom%3A%2013px%3B%0Amargin%2Dleft%3A%2013px%3B%0A%7D%0Adl%20dt%20%7B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0Aul%20%7B%0Amargin%2Dtop%3A%200%3B%0A%7D%0Aul%20li%20%7B%0Alist%2Dstyle%3A%20circle%20outside%3B%0A%7D%0Aul%20ul%20%7B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0Apre%2C%20code%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0Aborder%2Dradius%3A%203px%3B%0Acolor%3A%20%23333%3B%0Awhite%2Dspace%3A%20pre%2Dwrap%3B%20%0A%7D%0Apre%20%7B%0Aborder%2Dradius%3A%203px%3B%0Amargin%3A%205px%200px%2010px%200px%3B%0Apadding%3A%2010px%3B%0A%7D%0Apre%3Anot%28%5Bclass%5D%29%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Acode%20%7B%0Afont%2Dfamily%3A%20Consolas%2C%20Monaco%2C%20%27Courier%20New%27%2C%20monospace%3B%0Afont%2Dsize%3A%2085%25%3B%0A%7D%0Ap%20%3E%20code%2C%20li%20%3E%20code%20%7B%0Apadding%3A%202px%200px%3B%0A%7D%0Adiv%2Efigure%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0Aimg%20%7B%0Abackground%2Dcolor%3A%20%23FFFFFF%3B%0Apadding%3A%202px%3B%0Aborder%3A%201px%20solid%20%23DDDDDD%3B%0Aborder%2Dradius%3A%203px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Amargin%3A%200%205px%3B%0A%7D%0Ah1%20%7B%0Amargin%2Dtop%3A%200%3B%0Afont%2Dsize%3A%2035px%3B%0Aline%2Dheight%3A%2040px%3B%0A%7D%0Ah2%20%7B%0Aborder%2Dbottom%3A%204px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Apadding%2Dbottom%3A%202px%3B%0Afont%2Dsize%3A%20145%25%3B%0A%7D%0Ah3%20%7B%0Aborder%2Dbottom%3A%202px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Afont%2Dsize%3A%20120%25%3B%0A%7D%0Ah4%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23f7f7f7%3B%0Amargin%2Dleft%3A%208px%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Ah5%2C%20h6%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23ccc%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Aa%20%7B%0Acolor%3A%20%230033dd%3B%0Atext%2Ddecoration%3A%20none%3B%0A%7D%0Aa%3Ahover%20%7B%0Acolor%3A%20%236666ff%3B%20%7D%0Aa%3Avisited%20%7B%0Acolor%3A%20%23800080%3B%20%7D%0Aa%3Avisited%3Ahover%20%7B%0Acolor%3A%20%23BB00BB%3B%20%7D%0Aa%5Bhref%5E%3D%22http%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0Aa%5Bhref%5E%3D%22https%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0A%0Acode%20%3E%20span%2Ekw%20%7B%20color%3A%20%23555%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Edt%20%7B%20color%3A%20%23902000%3B%20%7D%20%0Acode%20%3E%20span%2Edv%20%7B%20color%3A%20%2340a070%3B%20%7D%20%0Acode%20%3E%20span%2Ebn%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Efl%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Ech%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Est%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Eco%20%7B%20color%3A%20%23888888%3B%20font%2Dstyle%3A%20italic%3B%20%7D%20%0Acode%20%3E%20span%2Eot%20%7B%20color%3A%20%23007020%3B%20%7D%20%0Acode%20%3E%20span%2Eal%20%7B%20color%3A%20%23ff0000%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Efu%20%7B%20color%3A%20%23900%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Eer%20%7B%20color%3A%20%23a61717%3B%20background%2Dcolor%3A%20%23e3d2d2%3B%20%7D%20%0A" type="text/css" />
+
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
 
 
 
@@ -192,14 +330,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
-<h1 class="title toc-ignore">Swiss Municipal Data Merger Tool: Manual</h1>
-<h4 class="date">20.02.2021</h4>
+<h1 class="title toc-ignore">Swiss Municipal Data Merger Tool:
+Manual</h1>
+<h4 class="date">03.04.2022</h4>
 
 
 
 <div id="introduction" class="section level2">
 <h2>Introduction</h2>
-<p>In Switzerland, the landscape of municipalities is changing rapidly mainly due to mergers. The Swiss Municipality Merger Tool (SMMT) automatically detects these mutations and maps municipalities of an old state to municipalities of a new state. The aim of this vignette is to illustrate how to use the functionality of the SMMT.</p>
+<p>In Switzerland, the landscape of municipalities is changing rapidly
+mainly due to mergers. The Swiss Municipality Merger Tool (SMMT)
+automatically detects these mutations and maps municipalities of an old
+state to municipalities of a new state. The aim of this vignette is to
+illustrate how to use the functionality of the SMMT.</p>
 This figure shows the decrease in municipalities over time:
 <center>
 <img src="data:image/png;base64,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" />
@@ -215,7 +358,8 @@ This figure shows the mutations for the decade 2010-2019:
 <div id="setup" class="section level3">
 <h3>Setup</h3>
 <ol style="list-style-type: decimal">
-<li>Download &amp; unpack the Swiss municipality inventory from the Federal Statistical Office website.</li>
+<li>Download &amp; unpack the Swiss municipality inventory from the
+Federal Statistical Office website.</li>
 </ol>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>path_inventory_xml <span class="ot">&lt;-</span> <span class="fu">download_municipality_inventory</span>(<span class="at">path =</span> <span class="fu">getwd</span>())</span></code></pre></div>
 <ol start="2" style="list-style-type: decimal">
@@ -266,20 +410,26 @@ This figure shows the mutations for the decade 2010-2019:
 </tr>
 </tbody>
 </table>
-<p>If of relevance, use the information about municipalities which could not be mapped (e.g. due to secessions). For example, if you need to exclude these elements from a dataset.</p>
+<p>If of relevance, use the information about municipalities which could
+not be mapped (e.g. due to secessions). For example, if you need to
+exclude these elements from a dataset.</p>
 </div>
 </div>
 <div id="definitions" class="section level2">
 <h2>Definitions</h2>
 <ul>
-<li>Spatial reference (German: Raumbezug): Set of municipalities at a given point in time. For example, the spatial reference of the Federal Population census year 2000 is the 5 December 2000.</li>
+<li>Spatial reference (German: Raumbezug): Set of municipalities at a
+given point in time. For example, the spatial reference of the Federal
+Population census year 2000 is the 5 December 2000.</li>
 </ul>
 </div>
 <div id="further-information" class="section level2">
 <h2>Further information</h2>
 <ul>
-<li>Details about the Swiss Municipality inventory (German: Historisiertes Gemeindeverzeichnis) at the Federal Statistical Office : <a href="https://www.bfs.admin.ch/bfs/de/home/grundlagen/agvch/historisiertes-gemeindeverzeichnis.html" class="uri">https://www.bfs.admin.ch/bfs/de/home/grundlagen/agvch/historisiertes-gemeindeverzeichnis.html</a></li>
-<li>Details about the defined standard: <a href="https://www.ech.ch/de/standards/47999" class="uri">https://www.ech.ch/de/standards/47999</a></li>
+<li>Details about the Swiss Municipality inventory (German:
+Historisiertes Gemeindeverzeichnis) at the Federal Statistical Office :
+<a href="https://www.bfs.admin.ch/bfs/de/home/grundlagen/agvch/historisiertes-gemeindeverzeichnis.html" class="uri">https://www.bfs.admin.ch/bfs/de/home/grundlagen/agvch/historisiertes-gemeindeverzeichnis.html</a></li>
+<li>Details about the defined standard: <a href="https://www.ech.ch/de/standards/60121" class="uri">https://www.ech.ch/de/standards/60121</a></li>
 </ul>
 </div>
 

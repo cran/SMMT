@@ -1,13 +1,17 @@
 #' Download municipality inventory
-#' 
-#' This functions downloads and extracts the municipality inventory form a defined online source.
-#' 
-#' @param url Character vector of length one. Link to the zip file containing the municipality inventory
-#' @param path Character vector of length one. Destination of extracted xml file.
-#' @param verbose Get a message after download about the content of the inventory.
-#' 
+#'
+#' This functions downloads and extracts the municipality inventory form a
+#' defined online source.
+#'
+#' @param url Character vector of length one. Link to the zip file containing
+#'   the municipality inventory.
+#' @param path Character vector of length one. Destination of extracted xml
+#'   file.
+#' @param verbose Get a message after download about the content of the
+#'   inventory.
+#'
 #' @return Character vector of length one. File path to the extracted XML file.
-#' 
+#'
 #' @export
 #' 
 
@@ -36,12 +40,9 @@ download_municipality_inventory <- function(url = get_current_url(),
   
   if (verbose) {
     mutations_object <- import_CH_municipality_inventory(file_path = xml_file_path)
-    mutations        <- mutations_object$mutations
-    
-    change_date_max <- max(mutations$change_date)
     
     message <- paste0("Municipal inventory successfully obtained. Most recent mutations enregistered: ", 
-                      format(change_date_max, "%d.%m.%Y"), ".")
+                      format(date_of_last_update(mutations_object$mutations), "%d.%m.%Y"), ".")
     
     message(message)
   }

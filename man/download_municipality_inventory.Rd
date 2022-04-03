@@ -11,15 +11,19 @@ download_municipality_inventory(
 )
 }
 \arguments{
-\item{url}{Character vector of length one. Link to the zip file containing the municipality inventory}
+\item{url}{Character vector of length one. Link to the zip file containing
+the municipality inventory.}
 
-\item{path}{Character vector of length one. Destination of extracted xml file.}
+\item{path}{Character vector of length one. Destination of extracted xml
+file.}
 
-\item{verbose}{Get a message after download about the content of the inventory.}
+\item{verbose}{Get a message after download about the content of the
+inventory.}
 }
 \value{
 Character vector of length one. File path to the extracted XML file.
 }
 \description{
-This functions downloads and extracts the municipality inventory form a defined online source.
+This functions downloads and extracts the municipality inventory form a
+defined online source.
 }
