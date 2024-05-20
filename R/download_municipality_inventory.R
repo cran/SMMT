@@ -25,9 +25,11 @@ download_municipality_inventory <- function(url = get_current_url(),
   file_list_zip <- unzip(zipfile = destfile, list = TRUE)
   file_list_zip <- as_tibble(file_list_zip)
   file_list_zip <- add_column(file_list_zip, is_xml = grepl(".xml", file_list_zip$Name))
-  file_list_zip <- mutate(file_list_zip, is_draft = grepl("DRAFT", Name))
+  file_list_zip <- mutate(file_list_zip, is_new = grepl("1.2.0", Name, fixed = T))
+  # file_list_zip <- mutate(file_list_zip, is_proposal = grepl("PROPOSAL", Name))
   
-  file_list_zip <- filter(file_list_zip, is_draft != TRUE)
+  file_list_zip <- filter(file_list_zip, is_new == TRUE)
+  # file_list_zip <- filter(file_list_zip, is_proposal != TRUE)
   file_list_zip_relevant <- filter(file_list_zip, is_xml == TRUE)
   
   unzip(zipfile = destfile, files = file_list_zip_relevant$Name, exdir = tempdir(), overwrite = FALSE)
@@ -45,6 +47,14 @@ download_municipality_inventory <- function(url = get_current_url(),
                       format(date_of_last_update(mutations_object$mutations), "%d.%m.%Y"), ".")
     
     message(message)
+    message("-----")
+    t_neue_gemeinden <- most_recent_changes(mutations = mutations_object$mutations)
+    t_neue_gemeinden <- t_neue_gemeinden %>% mutate(label = paste0(name, " (BfS Nr. ", bfs_nr, ", ",canton,")"))
+    label <- t_neue_gemeinden$label
+    
+    message("Neue Gemeinden: \n")
+    message(paste0(label, collapse = ", "))
+    
   }
   
   return(xml_file_path)

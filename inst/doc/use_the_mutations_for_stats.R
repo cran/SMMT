@@ -7,7 +7,7 @@ knitr::opts_chunk$set(
 library(SMMT)
 
 
-## ---- eval=FALSE--------------------------------------------------------------
+## ----eval=FALSE---------------------------------------------------------------
 #  
 #  # Import the municipality inventory
 #  mutations_object <- import_CH_municipality_inventory(file_path = path_inventory_xml)
@@ -21,7 +21,7 @@ library(SMMT)
 #  # Second example for one point in time:
 #  sy_municipality <- municipality_counter(mutations_object$mutations, "2001-04-04", geo_level = "ch")
 
-## ---- eval=FALSE--------------------------------------------------------------
+## ----eval=FALSE---------------------------------------------------------------
 #  
 #  mutations_object <- import_CH_municipality_inventory(file_path = path_inventory_xml)
 #  

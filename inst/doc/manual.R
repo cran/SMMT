@@ -7,10 +7,10 @@ knitr::opts_chunk$set(
 library(SMMT)
 
 
-## ---- eval=FALSE--------------------------------------------------------------
+## ----eval=FALSE---------------------------------------------------------------
 #  path_inventory_xml <- download_municipality_inventory(path = getwd())
 
-## ---- eval=FALSE--------------------------------------------------------------
+## ----eval=FALSE---------------------------------------------------------------
 #  mutations_object <- import_CH_municipality_inventory(file_path = path_inventory_xml)
 #  mutations        <- mutations_object$mutations
 #  
@@ -23,7 +23,7 @@ library(SMMT)
 old_state <- as.Date("1961-01-01")
 new_state <- as.Date("1963-01-01")
 
-## ---- echo = FALSE------------------------------------------------------------
+## ----echo = FALSE-------------------------------------------------------------
 mutations <- structure(list(hist_id = c(11227L, 11240L, 13189L),
 district_hist_id = c(10025L, 10025L, 10025L),
 kanton_abbr = c("AG", "AG", "AG"),

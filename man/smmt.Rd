@@ -2,6 +2,8 @@
 % Please edit documentation in R/smmt-package.R
 \docType{package}
 \name{smmt}
+\alias{SMMT}
+\alias{SMMT-package}
 \alias{smmt}
 \title{SMMT - The Swiss Municipal Data Merger Tool Maps Municipalities Over Time}
 \description{
@@ -15,3 +17,16 @@ context signifies a set of municipalities at a given point in time.
 \details{
 For detailed information and examples, see \code{\link{map_old_to_new_state}}
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/ValValetl/SMMT}
+  \item Report bugs at \url{https://github.com/ValValetl/SMMT/issues}
+}
+
+}
+\author{
+\strong{Maintainer}: Valentin Knechtl \email{valentinknechtl@gmail.com} (\href{https://orcid.org/0000-0002-8545-8883}{ORCID})
+
+}
+\keyword{internal}

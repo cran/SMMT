@@ -4,7 +4,12 @@
 \alias{municipality_counter}
 \title{Municipality counter}
 \usage{
-municipality_counter(mutations, dates, geo_level = "ch")
+municipality_counter(
+  mutations,
+  dates,
+  geo_level = "ch",
+  include_cant_lakes = FALSE
+)
 }
 \arguments{
 \item{mutations}{A tibble containing the municipality mutations inventory
@@ -13,6 +18,8 @@ municipality_counter(mutations, dates, geo_level = "ch")
 \item{dates}{A \link{Date} object vector}
 
 \item{geo_level}{Either "ch" or "cantons".}
+
+\item{include_cant_lakes}{Boolean, TRUE to also include lakes in the count.}
 }
 \value{
 A tibble with the municipality count per date and specified
@@ -20,5 +27,12 @@ A tibble with the municipality count per date and specified
 }
 \description{
 Count the municipalities for a set of dates. Either at the national or
-cantonal level. See vignette for details.
+cantonal level.  See vignette for details.
+}
+\note{
+All entities that have a bfs nr are counted (e.g. also Gemeindefreie
+  Gebiete). This is not exactly what the BfS does in the webtool Applikation
+  der Schweizer Gemeinden.  However, it is not possible to distinguish
+  "Gemeinden" und "Gemeindefreie Gebiete" generically, based on the
+  information in the Gemeindeverzeichnis.
 }
